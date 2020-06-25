@@ -17,7 +17,7 @@ class BaseModel:
     def __str__(self):
         """ Method that returns the string representation of the object"""
         string = "[{}] ({}) {}".format(self.__class__.__name__,
-                                     self.id, self.__dict__)
+                                       self.id, self.__dict__)
         return string
 
     def save(self):
@@ -26,7 +26,7 @@ class BaseModel:
 
     def to_dict(self):
         """
-        Method that returns a dictionary 
+        Method that returns a dictionary
         containing all keys/values of __dict__ of the instance
         """
         new_dic = self.__dict__.copy()
