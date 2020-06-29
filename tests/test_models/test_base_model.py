@@ -8,14 +8,12 @@ from datetime import datetime
 class testBaseModelClass(unittest.TestCase):
       """Test for class BaseModel"""
       def test_instantiation(self):
-              """Test instantiation"""
               b = BaseModel()
               self.assertEqual(str(type(b)), "<class 'models.base_model.BaseModel'>")
               self.assertIsInstance(b, BaseModel)
               self.assertTrue(issubclass(type(b), BaseModel))
 
       def test_datatime_created(self):
-            """Test if updated_at & created_at are current at creation"""
             date_now = datetime.now()
             b = BaseModel()
             diff = b.updated_at - b.created_at
@@ -24,12 +22,10 @@ class testBaseModelClass(unittest.TestCase):
             self.assertTrue(abs(diff.total_seconds()) < 0.1)
 
       def test_id(self):
-            """Test for unique user ids"""
             l = [BaseModel().id for i in range(1000)]
             self.assertEqual(len(set(l)), len(l))
 
       def test_to_dict(self):
-            """Tests the public instance method to_dict()."""
             b = BaseModel()
             b.name = "Adonis"
             b.age = 22
@@ -42,7 +38,6 @@ class testBaseModelClass(unittest.TestCase):
             self.assertEqual(d["age"], b.age)
 
       def test_str(self):
-            """test that the str method has the correct output"""
             b = BaseModel()
             string = "[BaseModel] ({}) {}".format(b.id, b.__dict__)
             self.assertEqual(string, str(b))

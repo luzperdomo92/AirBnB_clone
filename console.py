@@ -22,14 +22,11 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, class_name):
-        
-        if not 'class_name' in inspect.getmembers(models):
+        """df"""
+        if 'class_name' not in inspect.getmembers(models):
             print("** class doesn't exist **")
         else:
             print("exist")
-
-
-
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
