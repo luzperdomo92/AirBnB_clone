@@ -4,6 +4,7 @@ import unittest
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from datetime import datetime
+import pep8
 import os
 
 
@@ -29,6 +30,14 @@ class testBaseModelClass(unittest.TestCase):
                          "<class 'models.base_model.BaseModel'>")
         self.assertIsInstance(b, BaseModel)
         self.assertTrue(issubclass(type(b), BaseModel))
+
+    def test_pep8(self):
+        style = pep8.StyleGuide(quiet=True)
+        file1 = 'models/base_model.py'
+        file2 = 'tests/test_models/test_base_model.py'
+        result = style.check_files([file1, file2])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warning).")
 
     def test_init_no_args(self):
         self.resetStorage()
