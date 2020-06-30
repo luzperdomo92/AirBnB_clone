@@ -25,8 +25,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, class_name=""):
         """df"""
-        if class_name == "BaseModel":
-            new_instance = BaseModel()
+        if class_name in self.available_class_names:
+            if class_name == "User":
+                new_instance = User()
+            else: 
+                new_instance = BaseModel()
             new_instance.save()
             print(new_instance.id)
         elif not class_name:
