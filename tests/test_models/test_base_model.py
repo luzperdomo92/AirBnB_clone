@@ -8,10 +8,20 @@ import os
 
 
 class testBaseModelClass(unittest.TestCase):
+    def test_module_docstring(self):
+        self.assertTrue(len(BaseModel.__doc__) > 0)
+
     def resetStorage(self):
         FileStorage._FileStorage__objects = {}
         if os.path.isfile(FileStorage._FileStorage__file_path):
             os.remove(FileStorage._FileStorage__file_path)
+
+    def test_class_doc(self):
+        self.assertTrue(len(BaseModel.__doc__) > 0)
+
+    def test_functions_docs(self):
+        for func in dir(BaseModel):
+            self.assertTrue(len(func.__doc__) > 0)
 
     def test_instantiation(self):
         b = BaseModel()
