@@ -2,16 +2,36 @@
 """Unittest for base_model"""
 import unittest
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
 from datetime import datetime
+import os
 
 
 class testBaseModelClass(unittest.TestCase):
       """Test for class BaseModel"""
+      def resetStorage(self):
+            FileStorage._FileStorage__objects = {}
+            if os.path.isfile(FileStorage._FileStorage__file_path):
+                  os.remove(FileStorage._FileStorage__file_path)
+
       def test_instantiation(self):
               b = BaseModel()
               self.assertEqual(str(type(b)), "<class 'models.base_model.BaseModel'>")
               self.assertIsInstance(b, BaseModel)
               self.assertTrue(issubclass(type(b), BaseModel))
+
+      def test_init_no_args(self):
+            self.resetStorage()
+            with self.assertRaises(TypeError) as e:
+                  BaseModel.__init__()
+            msg = "__init__() missing 1 required positional argument: 'self'"
+            self.assertEqual(str(e.exception), msg)
+
+      def test_init_many_args(self):
+            self.resetStorage()
+            args = [i for i in range(1000)]
+            b = BaseModel(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+            b = BaseModel(*args)
 
       def test_datatime_created(self):
             date_now = datetime.now()
