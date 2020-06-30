@@ -87,7 +87,8 @@ class HBNBCommand(cmd.Cmd):
         if not class_name:
             print(list(FileStorage().all().values()))
         elif class_name in self.available_class_names:
-            print(list(FileStorage().filter_by_class_name(class_name).values()))
+            print(list(FileStorage()
+                       .filter_by_class_name(class_name).values()))
         else:
             print("** class doesn't exist **")
 
