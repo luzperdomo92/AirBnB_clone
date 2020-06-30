@@ -60,7 +60,6 @@ class BaseModel:
 
     def set_attribute(self, attr_name, value):
         """"""
-
         setattr(self, attr_name, value)
         models.storage.new(self)
         models.storage.save()
