@@ -9,7 +9,8 @@ from models.user import User
 
 class HBNBCommand(cmd.Cmd):
     """ Class that the entry point of the command interpreter """
-    available_class_names = ("BaseModel", "User")
+    available_class_names = ("BaseModel", "User", "State", "City",
+                                "Amenity", "Place", "Review")
     prompt = "(hbnb) "
 
     def do_EOF(self, line):
@@ -28,7 +29,17 @@ class HBNBCommand(cmd.Cmd):
         if class_name in self.available_class_names:
             if class_name == "User":
                 new_instance = User()
-            else: 
+            elif class_name == "State":
+                new_instance = State()
+            elif class_name == "City":
+                new_instance = City()
+            elif class_name == "Amenity":
+                new_instance = Amenity()
+            elif class_name == "Place":
+                new_instance = Place()
+            elif class_name == "Review":
+                new_instance = Review()
+            else:
                 new_instance = BaseModel()
             new_instance.save()
             print(new_instance.id)
