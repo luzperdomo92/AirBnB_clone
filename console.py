@@ -15,7 +15,7 @@ from models.review import Review
 class HBNBCommand(cmd.Cmd):
     """ Class that the entry point of the command interpreter """
     available_class_names = ("BaseModel", "User", "State", "City",
-                                "Amenity", "Place", "Review")
+                             "Amenity", "Place", "Review")
     prompt = "(hbnb) "
 
     def do_EOF(self, line):
@@ -151,6 +151,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         instance.set_attribute(attr_name, value)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

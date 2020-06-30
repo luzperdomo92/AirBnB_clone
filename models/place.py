@@ -23,8 +23,8 @@ class Place(BaseModel):
 
     def set_attribute(self, attr_name, value):
         """ """
-        if attr_name in ("number_rooms", "number_bathrooms","max_guest",
-                            "price_by_night"):
+        if attr_name in ("number_rooms", "number_bathrooms", "max_guest",
+                         "price_by_night"):
             value = int(value)
         elif attr_name in ("latitude", "longitude"):
             value = float(value)
