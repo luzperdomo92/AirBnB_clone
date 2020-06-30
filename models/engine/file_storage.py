@@ -35,7 +35,12 @@ class FileStorage:
                     jo = {}
 
             for k, v in jo.items():
-                FileStorage.__objects[k] = BaseModel(**v)
+                class_name = k.split('.')[0]
+                if class_name == 'User':
+                    instance = User(**v)
+                else:
+                    instance = BaseModel(**v)
+                FileStorage.__objects[k] = instance
 
     def find(self, class_name, id):
         """ Method to find all element in the __objects """
