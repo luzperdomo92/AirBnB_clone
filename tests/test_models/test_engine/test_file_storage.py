@@ -5,21 +5,43 @@ import unittest
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import storage
-
+import os
 
 class TestFileStorage(unittest.TestCase):
-    all_objs = storage.all()
-    print("-- Reloaded objects --")
-    for obj_id in all_objs.keys():
-        obj = all_objs[obj_id]
-        print(obj)
+    """Test Cases for the FileStorage class"""
 
-    print("-- Create a new object --")
-    my_model = BaseModel()
-    my_model.name = "Holberton"
-    my_model.my_number = 89
-    my_model.save()
-    print(my_model)
+    def resetStorage(self):
+        """Resets FileStorage data"""
+        FileStorage._FileStorage__objects = {}
+        if os.path.isfile(FileStorage._FileStorage__file_path):
+            os.remove(FileStorage._FileStorage__file_path)
+
+    def test_instantiation(self):
+        """Test instantiation of storage class"""
+        self.assertEqual(type(storage).__name__, "FileStorage")
+
+    def test_init_no_args(self):
+        """Tests __init__ with no arguments."""
+        self.resetStorage()
+        with self.assertRaises(TypeError) as e:
+            FileStorage.__init__()
+            msg = "descriptor '__init__' of 'object' object needs an argument"
+            self.assertEqual(str(e.exception), msg)
+
+    def test_init_many_args(self):
+        """Tests __init__ with many arguments."""
+        self.resetStorage()
+        with self.assertRaises(TypeError) as e:
+            b = FileStorage(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+            msg = "object() takes no parameters"
+            self.assertEqual(str(e.exception), msg)
+
+    def test_attributes(self):
+        """Tests class attributes."""
+        self.resetStorage()
+        self.assertTrue(hasattr(FileStorage, "_FileStorage__file_path"))
+        self.assertTrue(hasattr(FileStorage, "_FileStorage__objects"))
+        self.assertEqual(getattr(FileStorage, "_FileStorage__objects"), {})
 
 if __name__ == '__main__':
     unittest.main()
