@@ -4,11 +4,12 @@ import cmd
 import shlex
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
     """ Class that the entry point of the command interpreter """
-    available_class_names = ("BaseModel")
+    available_class_names = ("BaseModel", "User")
     prompt = "(hbnb) "
 
     def do_EOF(self, line):
