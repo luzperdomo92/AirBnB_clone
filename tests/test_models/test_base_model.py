@@ -6,30 +6,17 @@ import unittest
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from datetime import datetime
-import pep8
+import time
 import os
 
 
 class testBaseModelClass(unittest.TestCase):
     """a"""
-    def test_module_docstring(self):
-        """b"""
-        self.assertTrue(len(BaseModel.__doc__) > 0)
-
     def resetStorage(self):
         """c"""
         FileStorage._FileStorage__objects = {}
         if os.path.isfile(FileStorage._FileStorage__file_path):
             os.remove(FileStorage._FileStorage__file_path)
-
-    def test_class_doc(self):
-        """d"""
-        self.assertTrue(len(BaseModel.__doc__) > 0)
-
-    def test_functions_docs(self):
-        """e"""
-        for func in dir(BaseModel):
-            self.assertTrue(len(func.__doc__) > 0)
 
     def test_instantiation(self):
         """f"""
@@ -38,15 +25,6 @@ class testBaseModelClass(unittest.TestCase):
                          "<class 'models.base_model.BaseModel'>")
         self.assertIsInstance(b, BaseModel)
         self.assertTrue(issubclass(type(b), BaseModel))
-
-    def test_pep8(self):
-        """g"""
-        style = pep8.StyleGuide(quiet=True)
-        file1 = 'models/base_model.py'
-        file2 = 'tests/test_models/test_base_model.py'
-        result = style.check_files([file1, file2])
-        self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warning).")
 
     def test_init_no_args(self):
         """h"""
@@ -76,6 +54,15 @@ class testBaseModelClass(unittest.TestCase):
         """k"""
         l = [BaseModel().id for i in range(1000)]
         self.assertEqual(len(set(l)), len(l))
+
+    def test_3_save(self):
+        """n"""
+        b = BaseModel()
+        time.sleep(0.5)
+        date_now = datetime.now()
+        b.save()
+        diff = b.updated_at - date_now
+        self.assertTrue(abs(diff.total_seconds()) < 0.01)
 
     def test_to_dict(self):
         """l"""
