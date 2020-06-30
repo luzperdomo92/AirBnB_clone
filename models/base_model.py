@@ -38,6 +38,10 @@ class BaseModel:
                                        self.id, self.__dict__)
         return string
 
+    def __repr__(self):
+        """"""
+        return self.__str__()
+
     def save(self):
         """ Method that updates attribute with the current datetime"""
         self.updated_at = datetime.now()
@@ -53,3 +57,10 @@ class BaseModel:
         new_dic['created_at'] = self.created_at.isoformat()
         new_dic['updated_at'] = self.updated_at.isoformat()
         return new_dic
+
+    def set_attribute(self, attr_name, value):
+        """"""
+
+        setattr(self, attr_name, value)
+        models.storage.new(self)
+        models.storage.save()
