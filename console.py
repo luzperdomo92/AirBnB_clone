@@ -6,7 +6,6 @@ from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
 
-
 class HBNBCommand(cmd.Cmd):
     """ Class that the entry point of the command interpreter """
     available_class_names = ("BaseModel")
@@ -43,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
         except IndexError:
             print("** class name missing **")
             return
-        if not class_name in self.available_class_names:
+        if class_name not in self.available_class_names:
             print("** class doesn't exist **")
             return
 
@@ -52,7 +51,7 @@ class HBNBCommand(cmd.Cmd):
         except IndexError:
             print("** instance id missing **")
             return
-        
+
         instance = FileStorage().find(class_name, id)
         if not instance:
             print("** no instance found **")
@@ -67,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
         except IndexError:
             print("** class name missing **")
             return
-        if not class_name in self.available_class_names:
+        if class_name not in self.available_class_names:
             print("** class doesn't exist **")
             return
 
@@ -76,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
         except IndexError:
             print("** instance id missing **")
             return
-        
+
         instance = FileStorage().find(class_name, id)
         if not instance:
             print("** no instance found **")
@@ -100,7 +99,7 @@ class HBNBCommand(cmd.Cmd):
         except IndexError:
             print("** class name missing **")
             return
-        if not class_name in self.available_class_names:
+        if class_name not in self.available_class_names:
             print("** class doesn't exist **")
             return
 
@@ -117,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
         if not instance:
             print("** no instance found **")
             return
-        
+
         try:
             attr_name = agrs[2]
         except IndexError:

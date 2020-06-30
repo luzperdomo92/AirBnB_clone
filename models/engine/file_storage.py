@@ -43,7 +43,6 @@ class FileStorage:
         except KeyError:
             None
 
-
     def destroy(self, obj):
         """ """
         self.all().pop(self.obj_key(obj))

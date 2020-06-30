@@ -7,6 +7,7 @@ from models.engine.file_storage import FileStorage
 from models import storage
 import os
 
+
 class TestFileStorage(unittest.TestCase):
     """Test Cases for the FileStorage class"""
 
