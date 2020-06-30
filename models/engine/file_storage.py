@@ -38,6 +38,16 @@ class FileStorage:
                 class_name = k.split('.')[0]
                 if class_name == 'User':
                     instance = User(**v)
+                elif class_name == "State":
+                    instance = State(**v)
+                elif class_name == "City":
+                    instance = City(**v)
+                elif class_name == "Amenity":
+                    instance = Amenity(**v)
+                elif class_name == "Place":
+                    instance = Place(**v)
+                elif class_name == "Review":
+                    instance = Review(**v)
                 else:
                     instance = BaseModel(**v)
                 FileStorage.__objects[k] = instance
