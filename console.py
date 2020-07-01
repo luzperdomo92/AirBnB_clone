@@ -3,13 +3,13 @@
 import cmd
 import shlex
 from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
 from models.user import User
 from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
+import models
 
 
 class HBNBCommand(cmd.Cmd):
@@ -30,30 +30,35 @@ class HBNBCommand(cmd.Cmd):
         """d"""
         pass
 
-    def do_create(self, class_name=""):
+    def do_create(self, agrs_string=""):
         """df"""
-        if class_name in self.available_class_names:
-            if class_name == "User":
-                new_instance = User()
-            elif class_name == "State":
-                new_instance = State()
-            elif class_name == "City":
-                new_instance = City()
-            elif class_name == "Amenity":
-                new_instance = Amenity()
-            elif class_name == "Place":
-                new_instance = Place()
-            elif class_name == "Review":
-                new_instance = Review()
-            else:
-                new_instance = BaseModel()
-            new_instance.save()
-            print(new_instance.id)
-        elif not class_name:
+        agrs = shlex.split(agrs_string)
+        try:
+            class_name = agrs[0]
+        except IndexError:
             print("** class name missing **")
             return
-        else:
+
+        if class_name not in self.available_class_names:
             print("** class doesn't exist **")
+            return
+
+        elif class_name == "User":
+            new_instance = User()
+        elif class_name == "State":
+            new_instance = State()
+        elif class_name == "City":
+            new_instance = City()
+        elif class_name == "Amenity":
+            new_instance = Amenity()
+        elif class_name == "Place":
+            new_instance = Place()
+        elif class_name == "Review":
+            new_instance = Review()
+        else:
+            new_instance = BaseModel()
+        new_instance.save()
+        print(new_instance.id)
 
     def do_show(self, agrs_string=""):
         """d"""
@@ -73,7 +78,7 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
 
-        instance = FileStorage().find(class_name, id)
+        instance = models.storage.find(class_name, id)
         if not instance:
             print("** no instance found **")
         else:
@@ -97,18 +102,23 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
 
-        instance = FileStorage().find(class_name, id)
+        instance = models.storage.find(class_name, id)
         if not instance:
             print("** no instance found **")
         else:
-            FileStorage().destroy(instance)
+            models.storage.destroy(instance)
 
-    def do_all(self, class_name=""):
+    def do_all(self, agrs_string=""):
         """d"""
-        if not class_name:
-            print(list(FileStorage().all().values()))
-        elif class_name in self.available_class_names:
-            print(list(FileStorage()
+        agrs = shlex.split(agrs_string)
+        try:
+            class_name = agrs[0]
+        except IndexError:
+            print(list(models.storage.all().values()))
+            return
+
+        if class_name in self.available_class_names:
+            print(list(models.storage
                        .filter_by_class_name(class_name).values()))
         else:
             print("** class doesn't exist **")
@@ -134,7 +144,7 @@ class HBNBCommand(cmd.Cmd):
         attr_name = agrs[2]
         value = agrs[3]
 
-        instance = FileStorage().find(class_name, id)
+        instance = models.storage.find(class_name, id)
         if not instance:
             print("** no instance found **")
             return
