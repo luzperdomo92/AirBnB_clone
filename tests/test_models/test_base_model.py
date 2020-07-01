@@ -12,7 +12,7 @@ import os
 
 
 class testBaseModelClass(unittest.TestCase):
-    """a"""
+    """Test cases for the BaseModel class"""
     def resetStorage(self):
         """Resets FileStorage data"""
         FileStorage._FileStorage__objects = {}
