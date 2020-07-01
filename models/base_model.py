@@ -61,5 +61,6 @@ class BaseModel:
     def set_attribute(self, attr_name, value):
         """f"""
         setattr(self, attr_name, value)
+        self.updated_at = datetime.now()
         models.storage.new(self)
         models.storage.save()

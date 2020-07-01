@@ -66,7 +66,7 @@ class FileStorage:
 
     def destroy(self, obj):
         """d"""
-        self.all().pop(self.obj_key(obj))
+        del self.all()[self.obj_key(obj)]
         self.save()
 
     def obj_key(self, obj):
