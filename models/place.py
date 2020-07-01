@@ -4,7 +4,7 @@ from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """ """
+    """p"""
     city_id = ""
     user_id = ""
     name = ""
@@ -18,11 +18,11 @@ class Place(BaseModel):
     amenity_ids = []
 
     def __init__(self, *args, **kwargs):
-        """ """
+        """d"""
         super().__init__(*args, **kwargs)
 
     def set_attribute(self, attr_name, value):
-        """ """
+        """d"""
         if attr_name in ("number_rooms", "number_bathrooms", "max_guest",
                          "price_by_night"):
             value = int(value)

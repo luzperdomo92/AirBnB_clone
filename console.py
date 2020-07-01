@@ -27,6 +27,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def emptyline(self):
+        """d"""
         pass
 
     def do_create(self, class_name=""):
@@ -55,7 +56,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_show(self, agrs_string=""):
-        """ """
+        """d"""
         agrs = shlex.split(agrs_string)
         try:
             class_name = agrs[0]
@@ -79,7 +80,7 @@ class HBNBCommand(cmd.Cmd):
             print(instance)
 
     def do_destroy(self, agrs_string=""):
-        """ """
+        """d"""
         agrs = shlex.split(agrs_string)
         try:
             class_name = agrs[0]
@@ -103,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
             FileStorage().destroy(instance)
 
     def do_all(self, class_name=""):
-        """ """
+        """d"""
         if not class_name:
             print(list(FileStorage().all().values()))
         elif class_name in self.available_class_names:
@@ -113,7 +114,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_update(self, agrs_string=""):
-        """ """
+        """d"""
         agrs = shlex.split(agrs_string)
         try:
             class_name = agrs[0]

@@ -60,15 +60,16 @@ class FileStorage:
             None
 
     def destroy(self, obj):
-        """ """
+        """d"""
         self.all().pop(self.obj_key(obj))
         self.save()
 
     def obj_key(self, obj):
-        """ """
+        """d"""
         return "{}.{}".format(type(obj).__name__, obj.id)
 
     def filter_by_class_name(self, class_name):
+        """d"""
         return(
             dict(
                 filter(

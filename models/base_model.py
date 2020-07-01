@@ -39,7 +39,7 @@ class BaseModel:
         return string
 
     def __repr__(self):
-        """"""
+        """f"""
         return self.__str__()
 
     def save(self):
@@ -59,7 +59,7 @@ class BaseModel:
         return new_dic
 
     def set_attribute(self, attr_name, value):
-        """"""
+        """f"""
         setattr(self, attr_name, value)
         models.storage.new(self)
         models.storage.save()
