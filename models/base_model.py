@@ -40,7 +40,7 @@ class BaseModel:
 
     def __repr__(self):
         """f"""
-        return self.__str__()
+        return '"{}"'.format(self.__str__())
 
     def save(self):
         """ Method that updates attribute with the current datetime"""
