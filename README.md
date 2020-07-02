@@ -1,4 +1,5 @@
-<img align="left" width="200" height="200" src="https://images.squarespace-cdn.com/content/v1/52a11797e4b05f836261a40b/1520460989019-H2O2LTTNTO9B1UVP0UKC/ke17ZwdGBToddI8pDm48kOyctPanBqSdf7WQMpY1FsRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzdDaU_bF7Ds5W9lU7yP8WpaBCM76uVnxdYD9Ka9eZj3NBMAuNC_ujA-eHPkEsGI2A/bello.gif?format=1500w">
+<img align="left" width="100" height="100" src="https://images.squarespace-cdn.com/content/v1/52a11797e4b05f836261a40b/1520460989019-H2O2LTTNTO9B1UVP0UKC/ke17ZwdGBToddI8pDm48kOyctPanBqSdf7WQMpY1FsRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzdDaU_bF7Ds5W9lU7yP8WpaBCM76uVnxdYD9Ka9eZj3NBMAuNC_ujA-eHPkEsGI2A/bello.gif?format=1500w">
+
 # **AirBnB clone - The console**
 
 This repository is  the first step of the simple copy of the AirBnB website. This project is about a command interpreter to manipulate data without a visual interface, like in a Shell (perfect for development and debugging) 
