@@ -41,6 +41,7 @@
 .filters .locations {
     border-right: 1px solid #dddddd;
 }
+
 .filters h3 {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -54,6 +55,11 @@
     font-size: 14px;
 }
 
+.section h2 {
+    font-size: 16px;
+    margin-top: 0px
+}
+
 .section:hover .popover {
     display: block;
 }
@@ -61,7 +67,6 @@
 .section ul {
     list-style-type: none;
     margin: 0px;
-    line-height: 1.8
 }
 
 .section .popover{
@@ -74,15 +79,14 @@
 
     display: none;
 }
+
+.section .popover li{
+    margin-bottom: 10px;
+}
+
 .cities{
     padding-left: 20px;
 }
 .section.locations .popover{
     padding-left: 33px;
 }
-
-.section h2 {
-    font-size: 16px;
-    list-style-type: none;
-}
-
